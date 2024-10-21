@@ -1,0 +1,26 @@
+# Ignore binary files
+/bin
+/*.exe
+/*.exe~ 
+/*.out
+/*.test
+
+# Ignore dependency directories
+/vendor/
+
+# Ignore editor configuration files
+.idea/
+.vscode/
+.DS_Store
+
+# Ignore Go cache files
+*.cache
+
+# Ignore output directory
+output/
+
+# Ignore log files
+*.log
+
+# Ignore environment configuration file
+.env
