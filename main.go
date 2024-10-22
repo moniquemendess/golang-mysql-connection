@@ -2,12 +2,12 @@ package main
 
 import (
 	"database/sql"
-	"fmt"
 	"log"
 	"os"
 
 	_ "github.com/go-sql-driver/mysql"
 	"github.com/joho/godotenv"
+	"github.com/moniquemendess/golang-mysql-connection/controllers"
 )
 
 func main() {
@@ -26,5 +26,6 @@ func main() {
 
 	defer db.Close()
 
-	fmt.Println("Sucess!")
+	// Call the function to create a new author
+	controllers.CreateAuthor(db, "Douglas Crockford")
 }
