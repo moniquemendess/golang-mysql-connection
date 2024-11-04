@@ -13,9 +13,9 @@ func InserirAutor(db DatabaseExecutor, author Author) error {
 	return err
 }
 
-// delete user
-func DeleteUser(db DatabaseExecutor, id int) error {
-	query := "DELETE FROM users Where id = ?"
+// delete author
+func DeleteAuthor(db DatabaseExecutor, id int) error {
+	query := "DELETE FROM authors Where id = ?"
 	_, err := db.Exec(query, id)
 	return err
 }

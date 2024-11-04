@@ -42,6 +42,10 @@ func main() {
 		return services.CreateAuthor(db, c.Params("name"))
 	})
 
+	app.Delete("/delete-author/:id", func(c fiber.Ctx) error {
+		return services.DeleteAuthorID(db, c.Params("id"))
+	})
+
 	// Start the server on port 3000
 	log.Println("Server is running on http://localhost:3001")
 	log.Fatal(app.Listen("localhost:3001"))
