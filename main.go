@@ -6,8 +6,9 @@ import (
 	"os"
 
 	_ "github.com/go-sql-driver/mysql"
-	"github.com/gofiber/fiber/v3"
+	fiber "github.com/gofiber/fiber/v3"
 	"github.com/joho/godotenv"
+	"github.com/moniquemendess/golang-mysql-connection/services"
 )
 
 func main() {
@@ -37,9 +38,11 @@ func main() {
 	app := fiber.New()
 
 	// Configura as rotas
-	// routes.SetupRoutes(app, db)
+	app.Post("/create-author/:name", func(c fiber.Ctx) error {
+		return services.CreateAuthor(db, c.Params("name"))
+	})
 
 	// Start the server on port 3000
-	log.Println("Server is running onhttp://localhost:3001")
-	log.Fatal(app.Listen(":3001"))
+	log.Println("Server is running on http://localhost:3001")
+	log.Fatal(app.Listen("localhost:3001"))
 }

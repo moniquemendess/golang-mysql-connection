@@ -12,3 +12,10 @@ func InserirAutor(db DatabaseExecutor, author Author) error {
 	_, err := db.Exec(query, author.Name)
 	return err
 }
+
+// delete user
+func DeleteUser(db DatabaseExecutor, id int) error {
+	query := "DELETE FROM users Where id = ?"
+	_, err := db.Exec(query, id)
+	return err
+}
