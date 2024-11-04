@@ -8,7 +8,6 @@ import (
 	_ "github.com/go-sql-driver/mysql"
 	"github.com/gofiber/fiber/v3"
 	"github.com/joho/godotenv"
-	"github.com/moniquemendess/golang-mysql-connection/routes"
 )
 
 func main() {
@@ -38,7 +37,7 @@ func main() {
 	app := fiber.New()
 
 	// Configura as rotas
-	routes.SetupRoutes(app, db)
+	// routes.SetupRoutes(app, db)
 
 	// Start the server on port 3000
 	log.Println("Server is running onhttp://localhost:3001")

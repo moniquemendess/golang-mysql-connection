@@ -1,13 +1,7 @@
 package routes
 
-import (
-	"database/sql"
-
-	"github.com/gofiber/fiber/v3"
-)
-
-func SetupRoutes(app *fiber.App, db *sql.DB) {
-	app.Get("/", func(c fiber.Ctx) error {
-		return c.SendString("Hola CHRIS")
-	})
-}
+// func SetupRoutes(app *fiber.App, db *sql.DB) {
+// 	app.Post("/createAuthor", func(c fiber.Ctx) error {
+// 		return services.CreateAuthor(c, db)
+// 	})
+// }

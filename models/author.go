@@ -1,9 +1,5 @@
 package models
 
-import (
-	"database/sql"
-)
-
 // struct author
 type Author struct {
 	ID   int    `json:"id"`
@@ -11,7 +7,7 @@ type Author struct {
 }
 
 // insert author function
-func InserirAutor(db *sql.DB, author Author) error {
+func InserirAutor(db DatabaseExecutor, author Author) error {
 	query := "INSERT INTO authors (name) VALUES (?)"
 	_, err := db.Exec(query, author.Name)
 	return err
