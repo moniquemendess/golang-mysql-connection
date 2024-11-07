@@ -1,5 +1,7 @@
 package models
 
+import "database/sql"
+
 // struct author
 type Author struct {
 	ID   int    `json:"id"`
@@ -7,14 +9,20 @@ type Author struct {
 }
 
 // insert author function
-func InserirAutor(db DatabaseExecutor, author Author) error {
+func InserirAutor(db *sql.DB, author Author) error {
 	query := "INSERT INTO authors (name) VALUES (?)"
 	_, err := db.Exec(query, author.Name)
 	return err
 }
 
+func UpdateAuthor(db *sql.DB, id int, name string) error {
+	query := "Update authors SET name = ? WHERE id = ?"
+	_, err := db.Exec(query, name, id) // en la orden de la consulta query
+	return err
+}
+
 // delete author
-func DeleteAuthor(db DatabaseExecutor, id int) error {
+func DeleteAuthor(db *sql.DB, id int) error {
 	query := "DELETE FROM authors Where id = ?"
 	_, err := db.Exec(query, id)
 	return err

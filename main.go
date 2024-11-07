@@ -8,6 +8,7 @@ import (
 	_ "github.com/go-sql-driver/mysql"
 	fiber "github.com/gofiber/fiber/v3"
 	"github.com/joho/godotenv"
+	"github.com/moniquemendess/golang-mysql-connection/routes"
 	"github.com/moniquemendess/golang-mysql-connection/services"
 )
 
@@ -38,8 +39,17 @@ func main() {
 	app := fiber.New()
 
 	// Configura as rotas
+	routes.Setup(app, db)
+
+	// Configura as rotas
 	app.Post("/create-author/:name", func(c fiber.Ctx) error {
 		return services.CreateAuthor(db, c.Params("name"))
+	})
+
+	app.Post("/update-author/:id/:name", func(c fiber.Ctx) error {
+		id := c.Params("id")
+		name := c.Params("name")
+		return services.UpdateAuthorID(db, id, name)
 	})
 
 	app.Delete("/delete-author/:id", func(c fiber.Ctx) error {
