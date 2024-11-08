@@ -56,7 +56,7 @@ func QueryAuthorsWithPagination(db *sql.DB, limit, offset int) ([]models.Author,
 		authors = append(authors, author) // Adiciona o autor à fatia
 	}
 
-	return authors, nil // Retorna a fatia de autores
+	return authors, nil
 }
 
 func DeleteAuthorID(db *sql.DB, id string) error {
